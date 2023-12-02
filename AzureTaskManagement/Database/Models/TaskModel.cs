@@ -1,11 +1,9 @@
-using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
-
 namespace AzureTaskManagement.Database.Models;
 
 public class TaskModel
 {
-    [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
+    public TenantModel Tenant { get; set; }
+    public List<AttachmentModel> Attachments { get; set; }
     public string Name { get; set; }
 }

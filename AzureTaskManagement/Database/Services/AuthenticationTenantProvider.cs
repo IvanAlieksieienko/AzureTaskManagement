@@ -2,25 +2,11 @@ namespace AzureTaskManagement.Database.Services;
 
 public class AuthenticationTenantProvider : ITenantProvider
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private string? _tenant;
+    private Guid? _tenant;
 
-    public string TenantSchema
-    {
-        get
-        {
-            var claimsSchema = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(x => x.Type == "Tenant")?.Value;
-            return claimsSchema ?? _tenant ?? string.Empty;
-        }
-    }
+    public Guid Tenant => _tenant ?? Guid.Empty;
 
-    public AuthenticationTenantProvider(IHttpContextAccessor httpContextAccessor)
-    {
-        _httpContextAccessor = httpContextAccessor;
-    }
+    public void SetTenantIfNotExist(string tenant) => _tenant = Guid.Parse(tenant);
 
-    public void SetTenantSchemaIfNotExist(string tenant)
-    {
-        _tenant = tenant;
-    }
+    public void ClearTenant() => _tenant = Guid.Empty;
 }

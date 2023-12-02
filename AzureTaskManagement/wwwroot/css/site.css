@@ -20,3 +20,26 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+img {
+  height: 200px;
+}
+
+button, input[type=submit] {
+  padding: 5px 10px !important;
+  width: fit-content !important;
+  height: fit-content !important;
+  background: #1b6ec2;
+  border-radius: 15px !important;
+}
+
+button:hover {
+  background: black !important;
+}
+
+a {
+  padding: 10px;
+  text-decoration: none;
+  color: #020c4b;
+  border-radius: 15px !important;
+}

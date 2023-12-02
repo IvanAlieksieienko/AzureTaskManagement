@@ -9,13 +9,8 @@ public class TenantSchemaManager
         _dbContext = dbContext;
     }
 
-    public async Task EnsureSchemaForTenantAsync(string tenantId)
+    public async Task EnsureTenantInfoAsync(string tenantId)
     {
-        if (await _dbContext.SchemaExistsAsync(tenantId))
-        {
-            return;
-        }
-
-        await _dbContext.CreateSchemaAsync(tenantId);
+        await _dbContext.CreateTenantIfNotExist();
     }
 }

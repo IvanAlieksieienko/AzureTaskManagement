@@ -3,6 +3,7 @@ namespace AzureTaskManagement.Database.Services;
 public interface ITenantProvider
 {
 
-    string TenantSchema { get; }
-    void SetTenantSchemaIfNotExist(string tenant);
+    Guid Tenant { get; }
+    void SetTenantIfNotExist(string tenant);
+    void ClearTenant();
 }
